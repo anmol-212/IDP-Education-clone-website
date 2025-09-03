@@ -1,0 +1,731 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="icon" href="https://companieslogo.com/img/orig/IEL.AX-86ec4cbc.png?t=1648021418">
+    <title>IDP Education</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Poppins", sans-serif
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        .w3-half img {
+            margin-bottom: -6px;
+            margin-top: 16px;
+            opacity: 0.8;
+            cursor: pointer
+        }
+
+            .w3-half img:hover {
+                opacity: 1
+            }
+
+        .center {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .mySlides {
+            display: none
+        }
+
+        .w3-left, .w3-right, .w3-badge {
+            cursor: pointer
+        }
+
+        .w3-badge {
+            height: 13px;
+            width: 13px;
+            padding: 0
+        }
+        #chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            height: 50px;
+            background-color: red;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+            #chat-button:hover {
+                background-color: #cc0000;
+            }
+
+        #chat-icon {
+            margin-right: 5px;
+        }
+
+        #chat-widget {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 350px;
+            height: 450px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            display: none;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background-color: red;
+            color: #ffffff;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .chat-header img {
+                width: 100px;
+                height: auto;
+            }
+
+        .chat-body {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            word-wrap: break-word;
+        }
+
+
+        .chat-buttons {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .chat-buttons button {
+                width: 100%;
+                margin: 5px;
+                background-color: white;
+                color: black;
+                padding: 10px;
+                border: 2px solid black;
+                border-radius: 0;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+                .chat-buttons button:hover {
+                    background-color: #f2f2f2;
+                }
+
+        .type-message {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+            .type-message input {
+                flex-grow: 1;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 14px;
+                margin-right: 10px;
+            }
+
+            .type-message button {
+                background-color: red;
+                color: #ffffff;
+                padding: 8px 15px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+        .close-button {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .admin-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: blue;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .qr-code-container {
+            display: inline-block;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            background-color: #fff;
+            border: 5px solid #eaeaea;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+            .qr-code img {
+                width: 100%;
+                height: 100%;
+            }
+
+        .qr-code-label {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .search-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+            .search-container input[type="text"] {
+                padding: 12px;
+                border: none;
+                border-radius: 50px;
+                font-size: 16px;
+                background-color: #f9f9f9;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s, box-shadow 0.3s;
+                width: 250px;
+                outline: none;
+            }
+
+                .search-container input[type="text"]:focus {
+                    background-color: #fff;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
+
+            .search-container button {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+                padding: 12px 20px;
+                border: none;
+                background-color: #000; /* Black color */
+                border-radius: 0 50px 50px 0;
+                color: #fff;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+                .search-container button:hover {
+                    background-color: #333; /* Darker shade on hover */
+                }
+
+        .download-button {
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px;
+            background-color: #ccc;
+            color: #000;
+            font-size: 16px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s;
+        }
+
+            .download-button:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to right, #ff8080, #ccc); /* Gradient from red to grey */
+                transition: left 0.3s;
+            }
+
+            .download-button:hover:before {
+                left: 0;
+            }
+
+            .download-button span {
+                position: relative;
+                z-index: 1;
+            }
+    </style>
+
+
+
+</head>
+<body>
+    <!-- Login popup -->
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+            <div class="w3-center">
+                <br>
+                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/552/552721.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+            </div>
+
+            <form class="w3-container" action="program.cs/main" method="post">
+                <div class="w3-section">
+                    <label><b>Username</b></label>
+                    <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+                    <label><b>Password</b></label>
+                    <div class="w3-password-container">
+                        <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+                        <button class="w3-button w3-show-password" type="button" onclick="togglePasswordVisibility()">&#128065;</button>
+                    </div>
+                    <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit" onclick="openLink()">Login</button>
+                    <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
+                </div>
+            </form>
+
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+                <span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar">
+        <br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+
+            <h3 class="w3-padding-64"><b>IDP<br>Education</b></h3>
+        </div>
+        <div class="w3-bar-block">
+            <div class="search-container">
+                <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search..">
+                <button type="submit">&#128269;</button>
+            </div>
+            <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a>
+            <a href="#register" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Register for IELTS</a>
+            <a href="#App download" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Download Our App</a>
+            <a href="#packages" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About Us</a>
+            <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+            <button onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button w3-hover-white">Login</button>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+        <span>IDP Education</span>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+
+        <!-- Header -->
+        <img src="https://www.greatplacetowork.in/great/admin/company/assets/images/uploads/company-logo/992249019.png" alt="Logo" style="width: 25%; display: inline-block;">
+        <div class="w3-container" style="margin-top:80px" id="idp education">
+            <h1 class="w3-jumbo"><b></b></h1>
+            <h1 class="w3-xxxlarge w3-text-red"><b></b></h1>
+
+        </div>
+
+
+        <!-- Slide Show -->
+        <div class="w3-content w3-display-container" style="max-width:800px">
+            <a href="https://www.ieltsidpindia.com/information/ielts-makes-it-possible?utm_source=website&utm_medium=homepage&utm_campaign=brand_film_homepage" target="_blank">
+                <img class="mySlides" src="https://www.ieltsidpindia.com/images/banner_img_idp_32.webp" style="width:110%; height:400px;">
+            </a>
+            <a href="https://www.ieltsidpindia.com/information/international-english-language-exam-tests-registration?utm_source=website&utm_medium=homepage" target="_blank">
+                <img class="mySlides" src="https://www.ieltsidpindia.com/images/banner_img_idp_27.webp" style="width:110%; height:400px;">
+            </a>
+            <a href="https://www.ieltsidpindia.com/registration/registration" target="_blank">
+                <img class="mySlides" src="https://www.ieltsidpindia.com/images/banner_img_idp_6.webp" style="width:110%; height:400px;">
+            </a>
+            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+            </div>
+        </div>
+
+
+        <!-- Modal for full size images on click-->
+        <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+            <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+                <img id="img01" class="w3-image">
+                <p id="caption"></p>
+            </div>
+        </div>
+
+        <!-- Take IELTS on Computer -->
+        <div class="w3-container" id="computer" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-red"><b>Take IELTS on Computer - available 3 times a day, 7 days a week</b></h1>
+            <hr style="width:50px;border:5px solid red" class="w3-round">
+            <p>An easier, faster test experience, IELTS on Computer is now available in every major city. Get results within 3-5 days</p>
+            <p> ELTS testing on a computer gives you the convenience to take exactly the same IELTS test, Academic and General Training, using a computer. Computer-based IELTS is the same test in terms of content, structure, timing and fairness. If you prefer typing to writing, you can choose to take the Listening, Reading and Writing tests on a computer, the speaking test would remain the same, face-to-face with a certified IELTS examiner.</p>
+
+        </div>
+
+        <!-- Rigister For IELTS -->
+        <div class="w3-container" id="register" style="margin-top:75px">
+            <h1 class="w3-xxxlarge w3-text-red"><b>Register For IELTS</b></h1>
+            <hr style="width:50px;border:5px solid red" class="w3-round">
+            <h3> How to Register for IELTS exam? </h3>
+            <p>
+                There are there ways in which you can register for your IELTS. <br />
+
+                <br /> ◾  Register online and pay the test fee using a credit card
+                <br /> ◾ Register in person at any IDP branch or Input Node
+                <br /> ◾ Register by courier and pay the test fee by Demand Draft or ICICI deposit/HDFC deposit slip
+            </p>
+            <h2>Option 1: Register online and pay the test fee</h2>
+            <p>
+                Log on to www.ieltsidpindia.com
+                <br />  ◾ Select the option "Register for IELTS"
+                <br /> ◾ Select your test date and test city (you will see the seat availability status)
+                <br /> ◾  Complete the online application form
+                <br />  ◾  Pay the test fee using a valid credit card (Master / Visa)
+                <br /> <br />  Once your registration is complete, you will see a confirmation on your computer screen (you may print and keep this with you for future reference). A copy of the confirmation will also be sent in hard copy or on your registered email address
+
+                <br /> <br />    You’ll need to courier a photocopy of your Passport (first and last page), and any observation pages to the IDP Head Office (address provided below). Failing which you will NOT be allowed to sit the test. Candidates need to carry original passport on test day.
+            </p>
+            <h2>Option 2: Register in person at any IDP branch or Input Nod </h2>
+            <p>Walk into any IDP branch/head offices or your nearest Input Node. You can register using either of the following methods to register:</p>
+            <p>
+                <b>Method - I</b> <br /> ◾ Register online using the computer at the office and pay the test fee. You’ll get an immediate confirmation of your seat (this is identical to online registration)
+                <br /> ◾ Submit a photocopy of your Passport (first and last page), and observation pages, if any
+                <br /> ◾ Submit the duly signed Terms & Conditions document. Do read it properly before handing over
+                <br />  ◾  Receive your instant acknowledgement letter that confirms your seat in the test
+            </p>
+            <p>
+                <b>Method - II</b><br />◾ Fill the application form available at the IDP office/Input Node <br />
+                ◾  Sign the Terms & Conditions document provided with the application form <br />
+                ◾  Append a photocopy of your Passport (first and last page), and observation pages, if any <br />
+                ◾  Pay the test fee either by<br />
+                ◾  A valid credit / debit / ATM card, or<br />
+                ◾  Demand Draft (drawn in favour of "IDP Education India Private Limited, payable at New Delhi"). It should be made at any bank listed in the approved list of banks (provided in the Terms & Conditions document)
+                <br />  ◾  Depositing cash in an ICICI bank branch via a customised ICICI deposit slip, which can be either downloaded from the IDP IELTS website or collected from any IDP branch office/ Input Node. The original customer copy of the customised ICICI deposit slip needs to be handed over to IDP branch office or the Input Node as proof of payment
+            </p>
+
+            <div class="w3-row-padding w3-grayscale">
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-light-grey">
+                        <img src="https://cdn-icons-png.flaticon.com/512/55/55281.png" alt="Callender" style="width:20%">
+                        <div class="w3-container">
+                            <h3>Dates</h3>
+                            <p class="w3-opacity">IELTS on computer: Available 3 times a day, 7 days a week</p>
+                            <p>IELTS on paper: Available 4 fixed dates in a month</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-light-grey">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3253/3253254.png" alt="Notebook" style="width:20%">
+                        <div class="w3-container">
+                            <h3>Practice Material</h3>
+
+                            <p>Avail access to our wide range of free IELTS practice materials and start your IELTS preparation journey hassle-free.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-col m4 w3-margin-bottom">
+                    <div class="w3-light-grey">
+                        <img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" alt="Location" style="width:20%">
+                        <div class="w3-container">
+                            <h3>82 Test Centres</h3>
+                            <p>Get the convenience of booking an IELTS test near you. Choose from our 82 test locations across India.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="https://www.ieltsidpindia.com/registration/registration" class="download-button"> <span>Book Now</span></a>
+
+            <!--App download-->
+            <div class="w3-container" id="App download" style="margin-top:75px">
+                <h1 class="w3-xxxlarge w3-text-red"><b>The IELTS by IDP app</b></h1>
+                <hr style="width:50px;border:5px solid red" class="w3-round">
+                <p>Open doors, achieve your life goals and get the results you need on test day, with the official IELTS app.</p>
+                <p>Find out why IELTS is the most trusted English language testing system around the world. Prepare with confidence, using a personalised app experience, based on your level of skill. Then get test results as soon as they are released. Your best chance of success is the official IELTS by IDP app.</p>
+                <p>Aspiring to begin a new journey overseas for studies, immigration or work? We understand you already have a lot on your plate. Your English proficiency test should be the least of your worries. That's why we bring you IELTS by IDP - an all-in-one solution where you can book, prepare and access your IELTS test results from a single unified app.</p>
+                <h1 class="w3-xxxlarge w3-text-red"><b>Scan Now To Download Our App</b></h1>
+                <div class="qr-code-container">
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://play.google.com/store/apps/details?id=com.idp.ielts&hl=en&gl=US&pli=1" alt="Download for Android QR Code">
+                    </div>
+                    <div class="qr-code-label">Download for Android</div>
+                </div>
+
+                <div class="qr-code-container">
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://apps.apple.com/in/app/ielts-by-idp/id1623340137" alt="Download for iOS QR Code">
+                    </div>
+                    <div class="qr-code-label">Download for iOS</div>
+                </div> <br />
+                <a href="https://www.ieltsidpindia.com/ielts/app" class="download-button"><span>Download IELTS App</span> </a>
+                <!-- About US -->
+                <div class="w3-container" id="packages" style="margin-top:75px">
+                    <h1 class="w3-xxxlarge w3-text-red"><b>About Us</b></h1>
+                    <hr style="width:50px;border:5px solid red" class="w3-round">
+                    <img src="https://cdn.discordapp.com/attachments/977603881116790900/1125089304075579572/image.png" alt="Location" style="width:100%">
+                    <h3> <b>IDP: IELTS Australia</b> </h3>
+                    <p> IELTS Australia Pty Ltd is a wholly owned subsidiary of IDP Education Ltd, one of the world's leading international education organisations offering student placement in Australia, the USA, Canada, New Zealand and the UK. IDP Education has more than 45 years' experience in international higher education.</p>
+                    <p>IELTS Australia Pty Ltd manages a network of more than 100 IELTS test centres in over 45 countries . IELTS Australia Pty Ltd ACN 008 664 766.</p>
+                    <p>In 1989, a partnership between the University of Cambridge Local Examinations Syndicate, the British Council and IDP was formed to develop and manage IELTS (International English Language Testing System). Since then the network of test centres managed by IELTS Australia Pty Ltd has grown to more than a 100 test centres across the world.</p>
+                    <p>The quality and reliability of IELTS has been demonstrated through its recognition as the world's premier test for English proficiency. Please contact ielts.india@idp.com for further information.</p>
+                </div>
+
+            </div>
+
+            <!-- Contact -->
+            <div class="w3-container" id="contact" style="margin-top:75px">
+                <h1 class="w3-xxxlarge w3-text-red"><b>Contact</b></h1>
+                <hr style="width:50px;border:5px solid red" class="w3-round">
+                <p>
+                    In our endeavour to continuously offer a hassle-free experience to our test takers, we now offer you the facility to raise a complaint anytime anywhere. You can raise a support ticket and reach out to our team with ease.<br /> <br>
+                    So, If you have any queries about your test dates, registration, preparation, results, TRF, EoR and anything related to IELTS, you can email us on ielts.india@idp.com or call on our toll free number 1800-102-4544 and our team will respond within 2 working days to address your concern.
+                </p>
+                <div id="myFormContainer">
+                    <form id="myForm" action="Program.cs/main" method="post" onsubmit="event.preventDefault(); submitForm();">
+                        <div class="w3-section">
+                            <label>Name</label>
+                            <input class="w3-input w3-border" type="text" name="Name" required>
+                        </div>
+                        <div class="w3-section">
+                            <label>Email</label>
+                            <input class="w3-input w3-border" type="text" name="Email" required>
+                        </div>
+                        <div class="w3-section">
+                            <label>Message</label>
+                            <input class="w3-input w3-border" type="text" name="Message" required>
+                        </div>
+                        <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
+                    </form>
+                    <div id="confirmationMessage" class="hidden">
+                        <p>Thank you for submitting! We will contact you as soon as possible</p>
+                    </div>
+                </div>
+
+                <!-- End page content -->
+            </div>
+            <!-- Chatbot  -->
+            <div id="chat-button" onclick="toggleChatWidget()">
+                <span id="chat-icon">&#128172;</span> <!-- Message icon -->
+                Chat
+            </div>
+            <div id="chat-widget">
+                <div class="chat-header">
+                    <img src="https://cdn.discordapp.com/attachments/977603881116790900/1127255760175386625/logo1.png" alt="Logo">
+                    <button class="close-button" onclick="toggleChatWidget()">&#10005;</button>
+                </div>
+                <div class="chat-body" id="chat-body">
+                    <div class="chat-message">Hello there! I am here to help you with all your <span style="color: red; font-weight: bold;">IELTS</span> queries. Ask us anything you want!</div>
+                    <div class="chat-buttons">
+                        <button class="chat-button" onclick="sendMessage('To register for the IELTS test, please visit https://www.ieltsidpindia.com/information/how-to-register.')">I want to register for IELTS</button>
+                        <button class="chat-button" onclick="sendMessage('To book your speaking slot, please go to https://www.ieltsidpindia.com/registration/speaking-test.')">Regarding my speaking test</button>
+                        <button class="chat-button" onclick="sendMessage('To enhance your preparation for the IELTS test, we provide valuable online study materials. You can access them at https://www.ieltsidpindia.com/information/online-ielts-study-material.')">Prepare for IELTS</button>
+                        <button class="chat-button" onclick="sendMessage('We will connect you with an executive shortly. Please be patient while we assist you.')">Talk to customer Care</button>
+                    </div>
+                </div>
+                <div class="type-message">
+                    <input type="text" id="message-input" placeholder="Type your message" onkeypress="handleKeyPress(event)">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="w3-light-grey w3-container w3-padding-32" style="margin-top: 75px; padding-right: 58px; text-align: center;">
+                <img src="https://www.pngkit.com/png/detail/174-1744567_idp-logo-idp-education.png" alt="Logo" style="width: 15%; display: inline-block;">
+                <p class="w3-right">Global Gateway Towers, Tower-B, 5th Floor, Sikanderpur Ghosi, Sector-26, M.G. Road, Gurugram -122002 Haryana, India</p>
+                <div class="w3-third">
+                    <h3>Follow Us</h3>
+                    <a href="https://www.facebook.com/IDPstudyabroad.india/" class="w3-padding"><img src="https://1000logos.net/wp-content/uploads/2021/04/Facebook-logo.png" alt="Facebook" style="width: 49px;"></a>
+                    <a href="https://www.instagram.com/ieltsidpindia/?hl=en" class="w3-padding"><img src="https://image.pngaaa.com/724/19724-middle.png" alt="Instagram" style="width: 30px;"></a>
+                    <a href="https://twitter.com/i/flow/login?redirect_after_login=%2Fidpindia%3Flang%3Den" class="w3-padding"><img src="https://www.freeiconspng.com/uploads/logo-twitter-circle-png-transparent-image-1.png" alt="Twitter" style="width: 30px;"></a>
+                </div>
+                <br>
+                <div class="w3-row-padding w3-center">
+                    <p>&copy; 2023 IDP Education. All rights reserved.</p>
+                </div>
+            </div>
+
+
+
+            <script>
+                // Script to open and close sidebar
+                function w3_open() {
+                    document.getElementById("mySidebar").style.display = "block";
+                    document.getElementById("myOverlay").style.display = "block";
+                }
+
+                function w3_close() {
+                    document.getElementById("mySidebar").style.display = "none";
+                    document.getElementById("myOverlay").style.display = "none";
+                }
+
+                // Modal Image Gallery
+                function onClick(element) {
+                    document.getElementById("img01").src = element.src;
+                    document.getElementById("modal01").style.display = "block";
+                    var captionText = document.getElementById("caption");
+                    captionText.innerHTML = element.alt;
+                }
+                var slideIndex = 1;
+                showDivs(slideIndex);
+
+                function plusDivs(n) {
+                    showDivs(slideIndex += n);
+                }
+
+                function currentDiv(n) {
+                    showDivs(slideIndex = n);
+                }
+
+                function showDivs(n) {
+                    var i;
+                    var x = document.getElementsByClassName("mySlides");
+                    var dots = document.getElementsByClassName("demo");
+                    if (n > x.length) { slideIndex = 1 }
+                    if (n < 1) { slideIndex = x.length }
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" w3-white", "");
+                    }
+                    x[slideIndex - 1].style.display = "block";
+                    dots[slideIndex - 1].className += " w3-white";
+                }
+                // Login button action
+                function openLink() {
+
+                    var link = 'file:///C:/Users/anmol/OneDrive/Desktop/Coding%20stuff/Intern%20stuff/IDP%20website/login_page.html';
+
+                    // Open the link in a new tab or window
+                    window.open(link, '_blank');
+
+                    //chat bot
+                }
+                function toggleChatWidget() {
+                    var chatWidget = document.getElementById("chat-widget");
+                    chatWidget.style.display = chatWidget.style.display === "none" ? "flex" : "none";
+                }
+
+                function sendMessage(message) {
+                    var messageInput = document.getElementById("message-input");
+                    var messageText = message || messageInput.value.trim();
+
+                    if (messageText !== "") {
+                        var chatBody = document.getElementById("chat-body");
+                        var chatMessage = document.createElement("div");
+                        chatMessage.classList.add("chat-message");
+                        chatMessage.textContent = messageText;
+                        chatBody.appendChild(chatMessage);
+
+                        messageInput.value = "";
+                        messageInput.focus();
+
+                        // Scroll to the bottom of the chat body
+                        chatBody.scrollTop = chatBody.scrollHeight;
+                    }
+                }
+
+                function handleButtonClick(message) {
+                    sendMessage(message);
+                }
+
+                function handleKeyPress(event) {
+                    if (event.key === "Enter") {
+                        sendMessage();
+                    }
+                }
+                //show password
+                function togglePasswordVisibility() {
+                    var passwordInput = document.querySelector('input[name="psw"]');
+                    var showPasswordButton = document.querySelector('.w3-show-password');
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        showPasswordButton.innerHTML = '&#128064;';
+                    } else {
+                        passwordInput.type = 'password';
+                        showPasswordButton.innerHTML = '&#128065;';
+                    }
+                }
+
+                document.getElementById("myForm").addEventListener("submit", function (event) {
+                    event.preventDefault();
+                    showConfirmationMessage();
+                });
+
+                function showConfirmationMessage() {
+                    var formContainer = document.getElementById("myFormContainer");
+                    formContainer.style.display = "none";
+
+                    var confirmationMessage = document.getElementById("confirmationMessage");
+                    confirmationMessage.style.display = "block";
+
+                }
+                //send message
+                function submitForm() {
+                    // Display the confirmation message
+                    document.getElementById("confirmationMessage").classList.remove("hidden");
+
+
+                }
+            </script>
+
+</body>
+</html>

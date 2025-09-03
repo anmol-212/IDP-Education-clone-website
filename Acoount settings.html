@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="https://companieslogo.com/img/orig/IEL.AX-86ec4cbc.png?t=1648021418">
+    <title>Account Settings</title>
+    <style>
+        /* CSS styles for the form layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+            input[type="text"]:focus,
+            textarea:focus {
+                outline: none;
+                border-color: #5f9ea0;
+            }
+
+        .button-container {
+            text-align: center;
+        }
+
+            .button-container button {
+                padding: 10px 20px;
+                font-size: 16px;
+                font-weight: bold;
+                color: #fff;
+                border-radius: 4px;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s ease-in-out;
+            }
+
+                .button-container button.edit {
+                    background-color: #5f9ea0;
+                }
+
+                .button-container button.save {
+                    background-color: #4caf50;
+                }
+
+                .button-container button.cancel {
+                    background-color: #e53935;
+                }
+
+                .button-container button:disabled {
+                    opacity: 0.7;
+                    cursor: not-allowed;
+                }
+
+        /* Styles for the "Change Profile Picture" button */
+        .custom-file-upload {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #5f9ea0;
+            color: #fff;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+            .custom-file-upload:hover {
+                background-color: #4d8c8e;
+            }
+
+        /* Hide the default file input button */
+        #pictureInput {
+            display: none;
+        }
+
+        .logo-container {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .logo-link {
+            display: inline-block;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <a href="file:///C:/Users/anmol/OneDrive/Desktop/Coding%20stuff/Intern%20stuff/IDP%20website/login_page.html" class="logo-link">
+                <img src="https://www.greatplacetowork.in/great/admin/company/assets/images/uploads/company-logo/992249019.png" alt="Logo" class="logo-image">
+            </a>
+        </div>
+        <h1>Account Settings</h1>
+       <form>
+        <div class="form-group">
+            <label for="orgName">Profile Picture</label>
+            <div>
+                <img id="profilePicture"
+                     src="https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg"
+                     alt="Profile Picture" width="150">
+            </div>
+            <label for="pictureInput" class="custom-file-upload">
+                Change Profile Picture
+            </label>
+            <input type="file" id="pictureInput" accept="image/*">
+        </div>
+        <div class="form-group">
+            <label for="orgName">Organisation Name:</label>
+            <input type="text" id="orgName" value="IDP Education" readonly>
+        </div>
+        <div class="form-group">
+            <label for="contactPerson">Contact Person:</label>
+            <input type="text" id="contactPerson" value="Anmol Bhatnagar" readonly>
+        </div>
+        <div class="form-group">
+            <label for="contactDesignation">Contact Designation:</label>
+            <input type="text" id="contactDesignation" value="Intern (Software Developer)" readonly>
+        </div>
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="text" id="email" value="intern.anmol@idp.com" readonly>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" readonly>HNo.1867, C-Block, Palam Vihar, Gurgaon</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" value="Gurgaon" readonly>
+        </div>
+        <div class="form-group">
+            <label for="state">State:</label>
+            <input type="text" id="state" value="Harayana" readonly>
+        </div>
+        <div class="form-group">
+            <label for="mobileNo">Mobile No:</label>
+            <input type="text" id="mobileNo" value="8368510496" readonly>
+        </div>
+        <div class="form-group">
+            <label for="panNo">PAN No:</label>
+            <input type="text" id="panNo" value="ABCDE1234F" readonly>
+        </div>
+        <div class="form-group">
+            <label for="otherContactNo">Other Contact No:</label>
+            <input type="text" id="otherContactNo" value="9876543210" readonly>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth (dd/mm/yyyy):</label>
+            <input type="text" id="dob" value="02/12/2002" readonly>
+        </div>
+
+        <h2>Payment Information</h2>
+        <div class="form-group">
+            <label for="bankAccountNo">Bank Account No:</label>
+            <input type="text" id="bankAccountNo" value="6594857469" readonly>
+        </div>
+        <div class="form-group">
+            <label for="bankName">Bank Name:</label>
+            <input type="text" id="bankName" value="HDFC Bank" readonly>
+        </div>
+        <div class="form-group">
+            <label for="branchAddress">Branch Address:</label>
+            <input type="text" id="branchAddress" value="Bajhgerha" readonly>
+        </div>
+        <div class="form-group">
+            <label for="ifscNo">IFSC No:</label>
+            <input type="text" id="ifscNo" value="AFCD6854960" readonly>
+        </div>
+
+        <div class="button-container">
+            <button type="button" id="editButton" class="edit" onclick="enableFields()">Edit</button>
+            <button type="button" id="saveButton" class="save" onclick="saveChanges()" disabled>Save Changes</button>
+            <button type="button" class="cancel" onclick="cancelChanges()">Cancel</button>
+        </div>
+        </form>
+    </div>
+
+    <script>
+        function enableFields() {
+            var inputs = document.getElementsByTagName("input");
+            var textarea = document.getElementsByTagName("textarea");
+            var editButton = document.getElementById("editButton");
+            var saveButton = document.getElementById("saveButton");
+
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].removeAttribute("readonly");
+            }
+
+            for (var j = 0; j < textarea.length; j++) {
+                textarea[j].removeAttribute("readonly");
+            }
+
+            editButton.disabled = true;
+            saveButton.disabled = false;
+        }
+
+        function saveChanges() {
+            var inputs = document.getElementsByTagName("input");
+            var textarea = document.getElementsByTagName("textarea");
+            var editButton = document.getElementById("editButton");
+            var saveButton = document.getElementById("saveButton");
+
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].setAttribute("readonly", "true");
+            }
+
+            for (var j = 0; j < textarea.length; j++) {
+                textarea[j].setAttribute("readonly", "true");
+            }
+
+            editButton.disabled = false;
+            saveButton.disabled = true;
+        }
+
+        function cancelChanges() {
+            location.href = "file:///C:/Users/anmol/OneDrive/Desktop/Coding%20stuff/Intern%20stuff/IDP%20website/login_page.html";
+        }
+
+    </script>
+
+
+</body>
+</html>
